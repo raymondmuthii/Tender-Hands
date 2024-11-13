@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import storyService from '../../services/storyService';
 
-// Async thunks
 // Rest of your async thunks and slice code remains the same
 export const fetchStories = createAsyncThunk(
   'stories/fetchStories',
@@ -18,8 +17,6 @@ export const fetchStories = createAsyncThunk(
 );
 
 // The rest of your code remains exactly the same
-
-
 export const createStory = createAsyncThunk(
   'stories/createStory',
   async (storyData, { rejectWithValue }) => {

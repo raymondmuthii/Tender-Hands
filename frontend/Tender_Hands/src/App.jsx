@@ -5,6 +5,9 @@ import HomePage from './pages/HomePage';
 import CharityListPage from './pages/CharityListPage';
 import StoriesPage from './pages/StoriesPage';
 import UserProfilePage from './pages/UserProfilePage';
+import DonatePage from './pages/DonatePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';  
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
           <Route path="/charities" element={<CharityListPage />} />
           <Route path="/stories" element={<StoriesPage />} />
           <Route path="/profile" element={<UserProfilePage />} />
+          <Route path="/donate" element={<DonatePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Layout>
   );

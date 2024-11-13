@@ -1,3 +1,4 @@
+// src/pages/HomePage.jsx
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,10 +9,10 @@ import { fetchStories } from '../redux/slices/storySlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const { featured: featuredCharities = [], loading: charitiesLoading } = useSelector(
+  const { featured = [], loading: charitiesLoading } = useSelector(
     (state) => state.charities
   );
-  const { stories: recentStories = [], loading: storiesLoading } = useSelector(
+  const { stories = [], loading: storiesLoading } = useSelector(
     (state) => state.stories
   );
 
@@ -44,32 +45,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Impact Stats Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-purple-600">20%</h3>
-              <p className="mt-2 text-gray-600">
-                Impact Growth
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-purple-600">18 Weeks</h3>
-              <p className="mt-2 text-gray-600">
-                Average Response Time
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-purple-600">24 Weeks</h3>
-              <p className="mt-2 text-gray-600">
-                Program Duration
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Charities Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,9 +53,9 @@ const HomePage = () => {
           </h2>
           {charitiesLoading ? (
             <div className="text-center">Loading charities...</div>
-          ) : featuredCharities?.length > 0 ? (
+          ) : featured?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredCharities.map((charity) => (
+              {featured.map((charity) => (
                 <DonationCard key={charity.id} {...charity} />
               ))}
             </div>
@@ -106,9 +81,9 @@ const HomePage = () => {
           </h2>
           {storiesLoading ? (
             <div className="text-center">Loading stories...</div>
-          ) : recentStories?.length > 0 ? (
+          ) : stories?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {recentStories.map((story) => (
+              {stories.map((story) => (
                 <StoryCard key={story.id} {...story} />
               ))}
             </div>
@@ -123,24 +98,6 @@ const HomePage = () => {
               Read More Stories →
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-16 bg-purple-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Make a Difference?
-          </h2>
-          <p className="text-xl mb-8">
-            Set up a monthly donation.
-          </p>
-          <Link
-            to="/register"
-            className="inline-block bg-white text-purple-700 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Get Started
-          </Link>
         </div>
       </section>
     </div>
