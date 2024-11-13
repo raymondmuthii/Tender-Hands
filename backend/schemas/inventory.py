@@ -1,7 +1,7 @@
 # app/schemas/inventory.py
 from marshmallow import fields, validate
 from . import BaseSchema
-from ..models.inventory import Inventory
+from models import Inventory
 
 class InventorySchema(BaseSchema):
     item_name = fields.String(required=True, validate=validate.Length(min=2, max=100))

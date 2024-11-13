@@ -9,8 +9,8 @@ class BaseModel(db.Model):
     __abstract__ = True
     
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.now(datetime.timezone.utc))
+    updated_at = db.Column(db.DateTime, default=datetime.now(datetime.timezone.utc), onupdate=datetime.now(datetime.timezone.utc))
 
 class User(BaseModel):
     __tablename__ = 'users'
@@ -71,7 +71,7 @@ class Donation(BaseModel):
     __tablename__ = 'donations'
     
     amount = db.Column(db.Numeric(10, 2), nullable=False)
-    currency = db.Column(db.String(3), default='USD')
+    currency = db.Column(db.String(3), default='KSH')
     status = db.Column(db.String(20), default='pending')  # pending, completed, failed
     transaction_id = db.Column(db.String(100), unique=True)
     is_anonymous = db.Column(db.Boolean, default=False)
