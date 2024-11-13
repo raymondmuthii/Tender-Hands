@@ -1,7 +1,7 @@
 # app/schemas/charity.py
 from marshmallow import fields, validate
 from . import BaseSchema
-from ..models.charity import Charity
+from models import Charity
 
 class CharitySchema(BaseSchema):
     name = fields.String(required=True, validate=validate.Length(min=2, max=100))

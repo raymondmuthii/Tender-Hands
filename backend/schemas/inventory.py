@@ -1,12 +1,12 @@
 # app/schemas/inventory.py
-from marshmallow import fields, validate
-from . import BaseSchema
+from marshmallow import fields, validate, post_load
+from .inventory import BaseSchema
 from models import Inventory
 
 class InventorySchema(BaseSchema):
     item_name = fields.String(required=True, validate=validate.Length(min=2, max=100))
     description = fields.String()
-    quantity = fields.Integer(required=True, validate=validate.Range(min= = fields.String()
+    quantity = fields.Integer(required=True, validate=validate.Range(min=0))
     status = fields.String(validate=validate.OneOf(['in_stock', 'allocated', 'distributed']))
     
     # Foreign keys
