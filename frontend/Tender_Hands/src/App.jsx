@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Home from './pages/HomePage';
 import DonationList from './components/DonationList';
 import DonateForm from './components/DonateForm';
 import DonationHistory from './components/DonationHistory';
@@ -11,8 +11,8 @@ import CharityApplication from './components/CharityApplication';
 import CharityDashboard from './components/CharityDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import SignupPage from './pages/SignupPage';
-import LoginPage from './components/LoginPage';
-import ContactPage from './components/ContactPage'; // Import ContactPage
+import LoginPage from './pages/LoginPage';
+import ContactPage from './pages/ContactPage'; // Import ContactPage
 import './App.css';
 
 function App() {
