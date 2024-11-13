@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './slices/authSlice';
-import charityReducer from './slices/charitySlice';
-import donationReducer from './slices/donationSlice';
+import authReducer from './authSlice';
+import charityReducer from './charitySlice';
+import donationReducer from './donationSlice';
 
 const store = configureStore({
   reducer: {
