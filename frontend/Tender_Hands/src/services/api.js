@@ -1,92 +1,51 @@
-// api.js
 import axios from 'axios';
 
-// Set up the base URL for the API, using an environment variable if available
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001';
-
-// Create an Axios instance
+// Create an Axios instance for the Tender Hands app
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: 'https://tenderhands-api.com/api', // Replace with your actual API base URL
+  timeout: 10000, // Set a timeout for requests
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Helper function to set the Authorization header
-export const setAuthToken = (token) => {
-  if (token) {
-    // Set token in header if available
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } else {
-    // Remove token from headers if none is available
-    delete api.defaults.headers.common['Authorization'];
-  }
-};
-
-// Request interceptor to automatically attach tokens to requests
+// Request interceptor to add authorization token if needed
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('authToken'); // Assuming token is stored in localStorage
+    // If you have an authentication token, you can add it here
+    const token = localStorage.getItem('token'); // Example: getting token from local storage
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
-);
-
-// Response interceptor to handle errors globally
-api.interceptors.response.use(
-  (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // Handle unauthorized errors, e.g., redirect to login
-      console.error("Unauthorized. Redirecting to login.");
-      // Optionally, redirect or refresh token
-    }
     return Promise.reject(error);
   }
 );
 
-// Example API functions
-
-// Login
-export const loginUser = async (credentials) => {
-  try {
-    const response = await api.post('/auth/login', credentials);
-    const { token } = response.data;
-    localStorage.setItem('authToken', token); // Store token locally
-    setAuthToken(token); // Attach token to future requests
-    return response.data;
-  } catch (error) {
-    throw error.response ? error.response.data : error;
+// Response interceptor to handle responses globally
+api.interceptors.response.use(
+  (response) => {
+    // You can handle specific response statuses here if needed
+    return response.data; // Return only the data part of the response
+  },
+  (error) => {
+    // Handle errors globally
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      console.error('API Error:', error.response.data);
+      return Promise.reject(error.response.data);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('API Error: No response received', error.request);
+      return Promise.reject('No response received from the server');
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('API Error:', error.message);
+      return Promise.reject(error.message);
+    }
   }
-};
-
-// Get User Profile
-export const getUserProfile = async () => {
-  try {
-    const response = await api.get('/user/profile');
-    return response.data;
-  } catch (error) {
-    throw error.response ? error.response.data : error;
-  }
-};
-
-// Fetch Charities List
-export const getCharities = async () => {
-  try {
-    const response = await api.get('/charities');
-    return response.data;
-  } catch (error) {
-    throw error.response ? error.response.data : error;
-  }
-};
-
-// Logout
-export const logoutUser = () => {
-  localStorage.removeItem('authToken'); // Clear token from local storage
-  setAuthToken(null); // Clear auth token from header
-};
+);
 
 export default api;
