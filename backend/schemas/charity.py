@@ -1,7 +1,8 @@
 # app/schemas/charity.py
 from marshmallow import fields, validate
 from . import BaseSchema
-from models import Charity
+from backend.models.beneficiary import Charity
+import marshmallow as ma
 
 class CharitySchema(BaseSchema):
     name = fields.String(required=True, validate=validate.Length(min=2, max=100))
@@ -27,6 +28,6 @@ class CharitySchema(BaseSchema):
     stories = fields.Nested('StorySchema', many=True, exclude=('charity',), dump_only=True)
     inventory_items = fields.Nested('InventorySchema', many=True, exclude=('charity',), dump_only=True)
 
-    @post_load
+    @ma.post_load 
     def make_charity(self, data, **kwargs):
         return Charity(**data)

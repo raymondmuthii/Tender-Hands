@@ -2,8 +2,8 @@
 # app/schemas/beneficiary.py
 from marshmallow import fields, validate
 from . import BaseSchema
-from ..models.beneficiary import Beneficiary
-
+from models.beneficiary import Beneficiary
+import marshmallow as ma
 class BeneficiarySchema(BaseSchema):
     name = fields.String(required=True, validate=validate.Length(min=2, max=100))
     description = fields.String()
@@ -17,6 +17,6 @@ class BeneficiarySchema(BaseSchema):
     charity = fields.Nested('CharitySchema', only=('id', 'name'), dump_only=True)
     inventory_received = fields.Nested('InventorySchema', many=True, exclude=('beneficiary',), dump_only=True)
 
-    @post_load
+    @ma.post_load
     def make_beneficiary(self, data, **kwargs):
         return Beneficiary(**data)

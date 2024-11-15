@@ -2,6 +2,7 @@
 from marshmallow import fields, validate
 from . import BaseSchema
 from ..models.donation import Donation
+import marshmallow as ma
 
 class DonationSchema(BaseSchema):
     amount = fields.Decimal(required=True, places=2)
@@ -20,6 +21,6 @@ class DonationSchema(BaseSchema):
     donor = fields.Nested('UserSchema', only=('id', 'name'), dump_only=True)
     charity = fields.Nested('CharitySchema', only=('id', 'name'), dump_only=True)
 
-    @post_load
+    @ma.post_load
     def make_donation(self, data, **kwargs):
         return Donation(**data)

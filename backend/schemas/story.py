@@ -2,7 +2,7 @@
 from marshmallow import fields, validate
 from . import BaseSchema
 from ..models.story import Story
-
+import marshmallow as ma
 class StorySchema(BaseSchema):
     title = fields.String(required=True, validate=validate.Length(min=3, max=200))
     content = fields.String(required=True)
@@ -21,6 +21,6 @@ class StorySchema(BaseSchema):
     author = fields.Nested('UserSchema', only=('id', 'name'), dump_only=True)
     charity = fields.Nested('CharitySchema', only=('id', 'name'), dump_only=True)
 
-    @post_load
+    @ma.post_load
     def make_story(self, data, **kwargs):
         return Story(**data)

@@ -1,8 +1,8 @@
 # app/schemas/inventory.py
 from marshmallow import fields, validate, post_load
 from .inventory import BaseSchema
-from models import Inventory
-
+from backend.models.beneficiary import Inventory
+import marshmallow as ma
 class InventorySchema(BaseSchema):
     item_name = fields.String(required=True, validate=validate.Length(min=2, max=100))
     description = fields.String()
@@ -17,6 +17,6 @@ class InventorySchema(BaseSchema):
     charity = fields.Nested('CharitySchema', only=('id', 'name'), dump_only=True)
     beneficiary = fields.Nested('BeneficiarySchema', only=('id', 'name'), dump_only=True)
 
-    @post_load
+    @ma.post_load
     def make_inventory(self, data, **kwargs):
         return Inventory(**data)
