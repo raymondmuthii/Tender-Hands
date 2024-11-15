@@ -1,166 +1,112 @@
-// components/Navbar.js
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../redux/slices/userSlice';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/authSlice';
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const { user } = useSelector((state) => state.user);
+  const { isAuthenticated, role } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/');
+  };
+
+  const renderNavLinks = () => {
+    if (!isAuthenticated) {
+      return (
+        <li style={styles.navItem}>
+          <Link to="/login" style={styles.navLink}>Login</Link>
+        </li>
+      );
+    }
+
+    switch (role) {
+      case 'donor':
+        return (
+          <>
+            <li style={styles.navItem}>
+              <Link to="/donations" style={styles.navLink}>Donate</Link>
+            </li>
+            <li style={styles.navItem}>
+              <Link to="/donation-history" style={styles.navLink}>Donation History</Link>
+            </li>
+          </>
+        );
+      case 'charity':
+        return (
+          <>
+            <li style={styles.navItem}>
+              <Link to="/charity-dashboard" style={styles.navLink}>Charity Dashboard</Link>
+            </li>
+            <li style={styles.navItem}>
+              <Link to="/charity-application" style={styles.navLink}>Apply as a Charity</Link>
+            </li>
+          </>
+        );
+      case 'admin':
+        return (
+          <li style={styles.navItem}>
+            <Link to="/admin-dashboard" style={styles.navLink}>Admin Dashboard</Link>
+          </li>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
-    <nav className="bg-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-purple-600">
-              Tender Hands
-            </Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/charities" className="nav-link">
-              Charities
-            </Link>
-            <Link to="/stories" className="nav-link">
-              Stories
-            </Link>
-            {user ? (
-              <>
-                <Link to="/profile" className="nav-link">
-                  Profile
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="nav-link"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400"
-            >
-              <span className="sr-only">Open main menu</span>
-              {/* Hamburger Icon */}
-              <svg
-                className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              {/* Close Icon */}
-              <svg
-                className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link
-            to="/charities"
-            className="mobile-nav-link"
-            onClick={() => setIsOpen(false)}
-          >
-            Charities
-          </Link>
-          <Link
-            to="/stories"
-            className="mobile-nav-link"
-            onClick={() => setIsOpen(false)}
-          >
-            Stories
-          </Link>
-          {user ? (
-            <>
-              <Link
-                to="/profile"
-                className="mobile-nav-link"
-                onClick={() => setIsOpen(false)}
-              >
-                Profile
-              </Link>
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setIsOpen(false);
-                }}
-                className="mobile-nav-link w-full text-left"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="mobile-nav-link"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="mobile-nav-link"
-                onClick={() => setIsOpen(false)}
-              >
-                Register
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
+    <nav style={styles.navbar}>
+      <ul style={styles.navList}>
+        <li style={styles.navItem}>
+          <Link to="/" style={styles.navLink}>Home</Link>
+        </li>
+        {renderNavLinks()}
+        {/* Contact link before logout button */}
+        <li style={styles.navItem}>
+          <Link to="/contact" style={styles.navLink}>Contact</Link> {/* Contact link */}
+        </li>
+        {isAuthenticated && (
+          <li style={styles.navItem}>
+            <button style={styles.logoutButton} onClick={handleLogout}>Logout</button>
+          </li>
+        )}
+      </ul>
     </nav>
   );
+};
+
+// Inline styles object
+const styles = {
+  navbar: {
+    backgroundColor: '#333',
+    padding: '10px',
+    color: 'white',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  navList: {
+    listStyle: 'none',
+    display: 'flex',
+    padding: '0',
+    margin: '0',
+  },
+  navItem: {
+    marginRight: '20px',
+  },
+  navLink: {
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '16px',
+  },
+  logoutButton: {
+    backgroundColor: '#f44336',
+    color: 'white',
+    border: 'none',
+    padding: '8px 16px',
+    cursor: 'pointer',
+    fontSize: '16px',
+  },
 };
 
 export default Navbar;
