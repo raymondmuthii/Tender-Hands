@@ -277,19 +277,245 @@ const Home = () => {
   const renderHomeContent = () => {
     if (!isAuthenticated) {
       return (
+        
         <div style={contentStyle}>
           <h1 style={mainTitleStyle}>Welcome to Our Donation Platform</h1>
           <p style={descriptionStyle}>Your contributions can change lives!</p>
           <p style={descriptionStyle}>Join our community and make a lasting impact.</p>
           
-          <h1 style={mainTitleStyle}>Empower Change:Donate Regulary,make an impact</h1>
-          <p style={descriptionStyle}>Join us in our mission to support those in need by setting up a reccuring donation.Your consistent contributions can transform lives and foster lasting changes!</p>
-          
-          <h1 style={mainTitleStyle}>Impact <br></br>Make a Difference with Regular Donations</h1>
-          <p style={descriptionStyle}>Steady support <br></br>Your ongoing contributions empower charities to plan effectively and achieve their missions.Your consistent support creates lasting change in the community!</p>
-          
-          
+          <div style={sectionStyle}>
+            <h2 style={{ color: '#2c3e50', fontWeight: 'bold' }}>
+              Flexible Donation Options
+            </h2>
+            <p>Choose any amount that suits your budget.</p>
+            <Link to="/donation-options">
+              <button
+                style={buttonStyle}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+                }
+              >
+                Learn More
+              </button>
+            </Link>
+          </div>
 
+          <div style={sectionStyle}>
+            <h2 style={{ color: '#27ae60', fontWeight: 'bold' }}>
+              Transparent Donation Tracking
+            </h2>
+            <p>See exactly where your contributions go.</p>
+            <Link to="/tracking">
+              <button
+                style={buttonStyle}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+                }
+              >
+                Explore
+              </button>
+            </Link>
+          </div>
+          
+    <div style={sectionStyle}>
+      <h2 style={{ color: '#2980b9', fontWeight: 'bold' }}>Impact</h2>
+      <p>Join Our Giving Community. Together, we can make a difference.</p>
+      {/* Add a picture to the Impact section */}
+      <img
+        src="https://via.placeholder.com/300" // Replace with your image URL
+        alt="Impact"
+        style={{
+          width: '100%',  // Adjust as needed
+          maxWidth: '300px', // Optional: you can limit the width
+          marginBottom: '20px',
+          borderRadius: '10px',
+        }}
+      />
+      <Link to="/sign-up">
+        <button
+          style={buttonStyle}
+          onMouseOver={(e) =>
+            (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+          }
+          onMouseOut={(e) =>
+            (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+          }
+        >
+          Sign Up
+        </button>
+      </Link>
+    </div>
+    
+  
+
+  
+    <div style={sectionStyle}>
+      <h2 style={{ color: '#27ae60', fontWeight: 'bold' }}>Support</h2>
+      <p>Your contributions matter. Every donation helps us achieve our mission.</p>
+      {/* Add a picture to the Support section */}
+      <img
+        src="https://via.placeholder.com/300" // Replace with your image URL
+        alt="Support"
+        style={{
+          width: '100%',  // Adjust as needed
+          maxWidth: '300px', // Optional: you can limit the width
+          marginBottom: '20px',
+          borderRadius: '10px',
+        }}
+      />
+      <Link to="/donate">
+        <button
+          style={buttonStyle}
+          onMouseOver={(e) =>
+            (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+          }
+          onMouseOut={(e) =>
+            (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+          }
+        >
+          Donate
+        </button>
+      </Link>
+    </div>
+    
+    <div style={{ textAlign: 'center', marginTop: '40px', padding: '20px', borderRadius: '8px', backgroundColor: '#f0f4f8' }}>
+      <h2 style={{ color: '#2980b9', fontWeight: 'bold' }}>Impact</h2>
+      <p>Every donation makes a difference. Together, we have raised over $1 million to support vital programs. Join us in creating lasting change in our communities.</p>
+      <h3 style={{ color: '#27ae60' }}>Transforming Lives Through Your Generosity</h3>
+
+      {/* Donation Statistics */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
+        <div style={{ marginRight: '30px' }}>
+          <p style={{ fontSize: '2rem', fontWeight: 'bold' }}>75%</p>
+          <p>Funds Directly Impact</p>
+        </div>
+        <div style={{ marginRight: '30px' }}>
+          <p style={{ fontSize: '2rem', fontWeight: 'bold' }}>50%</p>
+          <p>Recurring Donors Increase</p>
+        </div>
+        <div>
+          <p style={{ fontSize: '2rem', fontWeight: 'bold' }}>90%</p>
+          <p>Projects Funded Successfully</p>
+        </div>
+      </div>
+
+      {/* Donation buttons */}
+      <div>
+        <Link to="/donate">
+          <button
+            style={buttonStyle}
+            onMouseOver={(e) =>
+              (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+            }
+            onMouseOut={(e) =>
+              (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+            }
+          >
+            Donate
+          </button>
+        </Link>
+        <Link to="/learn-more">
+          <button
+            style={buttonStyle}
+            onMouseOver={(e) =>
+              (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+            }
+            onMouseOut={(e) =>
+              (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+            }
+          >
+            Learn More
+          </button>
+        </Link>
+      </div>
+    </div>
+  
+    
+
+          <div style={sectionStyle}>
+            <h2 style={{ color: '#e74c3c', fontWeight: 'bold' }}>
+              Effortless Setup for Donations
+            </h2>
+            <p>Easily create your donation plan in just a few clicks.</p>
+            <Link to="/start-donation">
+              <button
+                style={buttonStyle}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+                }
+              >
+                Start
+              </button>
+            </Link>
+          </div>
+          {/* FAQ Section */}
+        <div style={sectionStyle}>
+          <h2 style={{ color: '#2980b9', fontWeight: 'bold' }}>Frequently Asked Questions</h2>
+
+          <div style={faqQuestionStyle} onClick={() => toggleFAQAnswer(0)}>
+            ❓ <strong>How do I donate?</strong>
+          </div>
+          {activeFAQ === 0 && (
+            <div style={faqAnswerStyle}>
+              Donating is simple! Just visit our donation page, select your preferred amount,
+              and choose whether to make it a one-time or recurring donation. Follow the prompts to complete
+              your donation securely.
+            </div>
+          )}
+
+          <div style={faqQuestionStyle} onClick={() => toggleFAQAnswer(1)}>
+            ❓ <strong>What are recurring donations?</strong>
+          </div>
+          {activeFAQ === 1 && (
+            <div style={faqAnswerStyle}>
+              Recurring donations allow you to contribute automatically at regular intervals, such as monthly
+              or quarterly. This ensures your support continues without needing to remember to donate each time.
+              It's an easy way to make a lasting impact!
+            </div>
+          )}
+
+          <div style={faqQuestionStyle} onClick={() => toggleFAQAnswer(2)}>
+            ❓ <strong>Can I change my donation?</strong>
+          </div>
+          {activeFAQ === 2 && (
+            <div style={faqAnswerStyle}>
+              Absolutely! You can modify your donation amount or frequency at any time through your account settings.
+              If you need assistance, our support team is here to help you with the process.
+            </div>
+          )}
+
+          <div style={faqQuestionStyle} onClick={() => toggleFAQAnswer(3)}>
+            ❓ <strong>Is my donation secure?</strong>
+          </div>
+          {activeFAQ === 3 && (
+            <div style={faqAnswerStyle}>
+              Yes, we prioritize your security. Our donation platform uses industry-standard encryption to protect
+              your personal and financial information. You can donate with confidence knowing that your data is safe.
+            </div>
+          )}
+
+          <div style={faqQuestionStyle} onClick={() => toggleFAQAnswer(4)}>
+            ❓ <strong>What impact does my donation have?</strong>
+          </div>
+          {activeFAQ === 4 && (
+            <div style={faqAnswerStyle}>
+              Your donation directly supports our programs and initiatives, helping us achieve our mission.
+              Every contribution, big or small, makes a difference in the lives of those we serve.
+              Together, we can create lasting change!
+            </div>
+          )}
+        </div>
+
+            
           {/* Dropdown button */}
           <div style={{ position: 'relative' }}>
             <button
@@ -416,7 +642,16 @@ const Home = () => {
     }
   };
 
-  return <div style={containerStyle}>{renderHomeContent()}</div>;
+  return <div style={containerStyle}>{renderHomeContent()}
+  {/* Footer with Terms of Service and Privacy Policy links */}
+  <footer style={{ marginTop: '60px', padding: '20px 0', backgroundColor: '#2c3e50', color: '#ecf0f1' }}>
+        <div>
+          <Link to="/terms" style={{ margin: '0 15px', color: '#ecf0f1', textDecoration: 'none' }}>Terms of Service</Link>
+          <Link to="/privacy-policy" style={{ margin: '0 15px', color: '#ecf0f1', textDecoration: 'none' }}>Privacy Policy</Link>
+        </div>
+        <p style={{ marginTop: '20px', fontSize: '0.9rem' }}>© 2024 Tender Hands. All rights reserved.</p>
+      </footer>
+  </div>; 
 };
 
 // FAQ question style
@@ -427,6 +662,17 @@ const faqQuestionStyle = {
   cursor: 'pointer',
   marginBottom: '10px',
 };
+
+const sectionStyle = {
+    textAlign: 'left',
+    marginTop: '40px',
+    padding: '20px',
+    borderRadius: '8px',
+    backgroundColor: '#f0f4f8',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  };
+
+
 
 // FAQ answer style
 const faqAnswerStyle = {
