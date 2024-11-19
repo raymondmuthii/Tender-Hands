@@ -1,4 +1,4 @@
-#app.py
+# app.py
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -8,11 +8,10 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 from services.donation_service import DonationService
-from database import db
+from database import db  # Import db from the new file
 
 load_dotenv()
 
-db = SQLAlchemy()
 ma = Marshmallow()
 jwt = JWTManager()
 migrate = Migrate()
@@ -38,7 +37,7 @@ def create_app(config_name=None):
     from .routes.charity import charity_bp
     from .routes.donation import donation_bp
     from .routes.story import story_bp
-    from .routes.auth import user_bp
+    from .routes.user import user_bp
     
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(charity_bp, url_prefix='/api/charities')
@@ -48,27 +47,5 @@ def create_app(config_name=None):
     
     with app.app_context():
         db.create_all()
-
-from services.donation_service import DonationService
-
-try:
-    # Create a donation
-    donation = DonationService.create_donation(
-        user_id=user.id,
-        charity_id=charity.id,
-        amount=Decimal('1000.00'),
-        payment_method=Donation.PAYMENT_MPESA,
-        is_recurring=True,
-        recurring_frequency=Donation.FREQUENCY_MONTHLY
-    )
     
-    # Complete the donation
-    DonationService.complete_donation(donation.id)
-    
-    # Get charity total
-    total = DonationService.get_charity_total(charity.id)
-    print(f"Donation amount: {donation.formatted_amount}")
-    print(f"Charity total: KES {total:,.2f}")
-    
-except ValueError as e:
-    print(f"Error: {str(e)}")
+    return app

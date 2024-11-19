@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from marshmallow import ValidationError
-from .extensions import db
+from database import db
 from ..models.user import User
 from ..schemas.user import UserSchema
 from . import auth_bp
