@@ -132,3 +132,16 @@ This repository contains the backend code for a charity donation platform. It's 
 |-- package.json
 |-- README.md
 |-- package-lock.json
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development   
+ and testing purposes.
+
+### Prerequisites
+
+* **Node.js and npm:** Make sure you have Node.js and   
+ npm installed on your system.
+* **Python and pip:**  Ensure you have Python and pip installed.
+* **Virtual environment:** Use a virtual environment for the backend.
+* **Database:**  Set up a database e.g., PostgreSQL, MySQL
