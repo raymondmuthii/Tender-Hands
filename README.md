@@ -145,3 +145,31 @@ These instructions will get you a copy of the project up and running on your loc
 * **Python and pip:**  Ensure you have Python and pip installed.
 * **Virtual environment:** Use a virtual environment for the backend.
 * **Database:**  Set up a database e.g., PostgreSQL, MySQL
+
+### Installing
+
+1. **Clone the repository:**
+git clone...
+
+2. Backend Setup:
+
+Navigate to the backend directory:
+Bash
+cd /home/raymond/Tender_Hands/backend
+
+Create and activate a virtual environment:
+Bash
+python3 -m venv venv
+source venv/bin/activate
+
+Install backend dependencies:
+Bash
+pip install -r requirements.txt
+
+Set up environment variables in a .env file (see the backend README for details).
+Run database migrations:
+Bash
+flask db init
+flask db migrate
+flask db upgrade
+
