@@ -27,111 +27,112 @@ This repository contains the backend code for a charity donation platform. It's 
 ## Project Structure
 
 /Tender_Hands/
-|-- frontend
-│   |-- Tender_Hands
-│       |-- public
-│       │   |-- index.html
-│       │   |-- vite.svg
-│       |-- src
-│       │   |-- components
-│       │   │   |-- AdminDashboard.jsx
-│       │   │   |-- CharityApplication.jsx
-│       │   │   |-- CharityDashboard.jsx
-│       │   │   |-- CheckoutForm.jsx
-│       │   │   |-- DonateForm.jsx
-│       │   │   |-- DonationHistory.jsx
-│       │   │   |-- DonationList.jsx
-│       │   │   |-- Navbar.jsx
-│       │   |-- pages
-│       │   │   |-- CharityDetailPage.jsx
-│       │   │   |-- ContactPage.jsx
-│       │   │   |-- DonatePage.jsx
-│       │   │   |-- HomePage.jsx
-│       │   │   |-- RegisterPage.jsx
-│       │   │   |-- LoginPage.jsx
-│       │   │   |-- SignupPage.jsx
-│       │   |-- redux
-│       │   │   |-- authSlice.jsx
-│       │   │   |-- donationSlice.jsx
-│       │   │   |-- charitySlice.jsx
-│       │   │   |-- store.jsx
-│       │   │   |-- storySlice.jsx
-│       │   |-- services
-│       │   │   |-- api.js
-│       │   │   |-- charityService.js
-│       │   │   |-- donationService.js
-│       │   │   |-- userService.js
-│       │   │   |-- storySlice.js
-│       │   |-- App.css
-│       │   |-- App.jsx
-│       │   |-- main.jsx
-│       │   |-- index.css
-│       |-- ...
-|-- backend
-│   |-- venv
-│   │   |-- ...
-│   |-- pycache
-│   │   |-- ...
-│   |-- app 
-│   │   |-- init.py
-│   │   |-- routes
-│   │   │   |-- auth.py
-│   │   │   |-- charity.py
-│   │   │   |-- donation.py
-│   │   │   |-- story.py
-│   │   │   |-- user.py
-│   │   │   |-- admin.py
-│   │   |-- schemas
-│   │   │   |-- beneficiary.py
-│   │   │   |-- charity.py
-│   │   │   |-- donation.py
-│   │   │   |-- inventory.py
-│   │   │   |-- story.py
-│   │   │   |-- user.py
-│   │   |-- services
-│   │   │   |-- admin_service.py
-│   │   │   |-- charity_admin_service.py
-│   │   |-- models
-│   │   │   |-- beneficiary.py
-│   │   │   |-- charity.py
-│   │   │   |-- donation.py
-│   │   │   |-- story.py
-│   │   │   |-- user.py
-│   │   |-- utils
-│   │       |-- decorators.py
-│   |-- config
-│   │   |-- init.py
-│   |-- models
-│   │   |-- init.py
-│   │   |-- beneficiary.py
-│   │   |-- charity.py
-│   │   |-- donation.py
-│   │   |-- story.py
-│   │   |-- user.py
-│   |-- routes
-│   │   |-- init.py
-│   |-- schemas
-│   │   |-- init.py
-│   │   |-- beneficiary.py
-│   │   |-- charity.py
-│   │   |-- donation.py
-│   │   |-- inventory.py
-│   │   |-- story.py
-│   │   |-- story.pyma.schema
-│   │   |-- user.py
-│   |-- services
-│       |-- pycache
-│       |-- admin_service.py
-│       |-- charity_admin_service.py
-│       |-- charity_service.py
-│       |-- donation_service.py
-│       |-- user_service.py
-│   |-- app.py
-│   |-- database.py
-│   |-- requirements.txt
-|-- package.json
-|-- README.md
-|-- package-lock.json
+├── frontend
+│   └── Tender_Hands
+│       ├── public
+│       │   ├── index.html
+│       │   └── vite.svg
+│       ├── src
+│       │   ├── components
+│       │   │   ├── AdminDashboard.jsx
+│       │   │   ├── CharityApplication.jsx
+│       │   │   ├── CharityDashboard.jsx
+│       │   │   ├── CheckoutForm.jsx
+│       │   │   ├── DonateForm.jsx
+│       │   │   ├── DonationHistory.jsx
+│       │   │   ├── DonationList.jsx
+│       │   │   └── Navbar.jsx
+│       │   ├── pages
+│       │   │   ├── CharityDetailPage.jsx
+│       │   │   ├── ContactPage.jsx
+│       │   │   ├── DonatePage.jsx
+│       │   │   ├── HomePage.jsx
+│       │   │   ├── RegisterPage.jsx
+│       │   │   ├── LoginPage.jsx
+│       │   │   └── SignupPage.jsx
+│       │   ├── redux
+│       │   │   ├── authSlice.jsx
+│       │   │   ├── donationSlice.jsx
+│       │   │   ├── charitySlice.jsx
+│       │   │   ├── store.jsx
+│       │   │   └── storySlice.jsx
+│       │   ├── services
+│       │   │   ├── api.js
+│       │   │   ├── charityService.js
+│       │   │   ├── donationService.js
+│       │   │   ├── userService.js
+│       │   │   └── storySlice.js
+│       │   ├── App.css
+│       │   ├── App.jsx
+│       │   ├── main.jsx
+│       │   └── index.css
+│       └── ...
+├── backend
+│   ├── venv
+│   │   └── ...
+│   ├── pycache
+│   │   └── ...
+│   ├── app 
+│   │   ├── init.py
+│   │   ├── routes
+│   │   │   ├── auth.py
+│   │   │   ├── charity.py
+│   │   │   ├── donation.py
+│   │   │   ├── story.py
+│   │   │   ├── user.py
+│   │   │   └── admin.py
+│   │   ├── schemas
+│   │   │   ├── beneficiary.py
+│   │   │   ├── charity.py
+│   │   │   ├── donation.py
+│   │   │   ├── inventory.py
+│   │   │   ├── story.py
+│   │   │   └── user.py
+│   │   ├── services
+│   │   │   ├── admin_service.py
+│   │   │   └── charity_admin_service.py
+│   │   ├── models
+│   │   │   ├── beneficiary.py
+│   │   │   ├── charity.py
+│   │   │   ├── donation.py
+│   │   │   ├── story.py
+│   │   │   └── user.py
+│   │   └── utils
+│   │       └── decorators.py
+│   ├── config
+│   │   └── init.py
+│   ├── models
+│   │   ├── init.py
+│   │   ├── beneficiary.py
+│   │   ├── charity.py
+│   │   ├── donation.py
+│   │   ├── story.py
+│   │   └── user.py
+│   ├── routes
+│   │   └── init.py
+│   ├── schemas
+│   │   ├── init.py
+│   │   ├── beneficiary.py
+│   │   ├── charity.py
+│   │   ├── donation.py
+│   │   ├── inventory.py
+│   │   ├── story.py
+│   │   ├── story.pyma.schema
+│   │   └── user.py
+│   └── services
+│       ├── pycache
+│       ├── admin_service.py
+│       ├── charity_admin_service.py
+│       ├── charity_service.py
+│       ├── donation_service.py
+│       └── user_service.py
+│   ├── app.py
+│   ├── database.py
+│   └── requirements.txt
+├── package.json
+├── README.md
+└── package-lock.json
+
 
 ## Getting Started
 
