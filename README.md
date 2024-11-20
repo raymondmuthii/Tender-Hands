@@ -46,49 +46,49 @@ git clone...
 
 Navigate to the backend directory:
 Bash
-cd /home/raymond/Tender_Hands/backend
+* cd /home/raymond/Tender_Hands/backend
 
 Create and activate a virtual environment:
 Bash
-python3 -m venv venv
-source venv/bin/activate
+* python3 -m venv venv
+* source venv/bin/activate
 
 Install backend dependencies:
 Bash
-pip install -r requirements.txt
+* pip install -r requirements.txt
 
-Set up environment variables in a .env file (see the backend README for details).
+Set up environment variables in a .env file.
 Run database migrations:
 Bash
-flask db init
-flask db migrate
-flask db upgrade
+* flask db init
+* flask db migrate
+* flask db upgrade
 
 3. Frontend setup
 Navigate to the frontend
 Install frontend dependencies:
 Bash
-npm install 
+* npm install 
 
 4. Running the Application
-Start the backend server
+Start the backend server:
 Bash
-flask run
+* flask run
 
 Start the frontend development server:
 
 Bash
-npm run dev
+* npm run dev
 
-5. Built With:
-Flask - The web framework used
-React - Frontend library
-Redux - State management library
+### Built With:
+* Flask - The web framework used
+* React - Frontend library
+* Redux - State management library
 
-6. contributors
-Gadiye Kirimi - https://github.com/Gadiye
-Joanne Mbula - https://github.com/lowkey-joanne
-Arnold Karoki - https://github.com/arnoldkaroki
-Steve Mutwiri - https://github.com/stevedev-ops
-Raymond Muthii - https://github.com/raymuthii
-June Jepkurui -https://github.com/June-Jepkurui-png
+### Contributors
+* **Gadiye Kirimi - https://github.com/Gadiye**
+* **Joanne Mbula - https://github.com/lowkey-joanne**
+* **Arnold Karoki - https://github.com/arnoldkaroki**
+* **Steve Mutwiri - https://github.com/stevedev-ops**
+* **Raymond Muthii - https://github.com/raymuthii**
+* **June Jepkurui -https://github.com/June-Jepkurui-png**
