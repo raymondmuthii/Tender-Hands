@@ -14,3 +14,12 @@ This repository contains the backend code for a charity donation platform. It's 
 * **Inventory Tracking:** Basic inventory management for charities to track donated goods.
 * **Admin Dashboard:** Provides an overview of platform data and tools for managing users and charities.
 * **API Documentation:**  (To be added) Clear documentation for all API endpoints.
+
+## Technologies Used
+
+* **Flask:** Python web framework.
+* **SQLAlchemy:**  ORM for database interaction.
+* **Flask-Migrate:**  Database migrations.
+* **Marshmallow:**  Object serialization/deserialization.
+* **Flask-JWT-Extended:**  JWT authentication.
+* **Flask-CORS:**  Cross-Origin Resource Sharing.
