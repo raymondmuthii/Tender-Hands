@@ -15,6 +15,8 @@ import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import About from './pages/about';
 import ForgotPasswordPage from './pages/ForgotPasswordPage'; 
+import LearnMore from './pages/LearnMore'; 
+import ExplorePage from './pages/ExplorePage'; 
 
 import './App.css';
 
@@ -42,6 +44,8 @@ function App() {
             <Route path="/contact" element={<ContactPage />} /> {/* Add Contact Page route */}
             <Route path='about' element={<About />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/learn-more" element={<LearnMore />} />
+            <Route path="/explore" element={<ExplorePage />} />
           </Routes>
         </div>
       </Router>
