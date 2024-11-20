@@ -173,3 +173,9 @@ flask db init
 flask db migrate
 flask db upgrade
 
+3. Frontend setup
+Navigate to the frontend
+Install frontend dependencies:
+Bash
+npm install 
+
