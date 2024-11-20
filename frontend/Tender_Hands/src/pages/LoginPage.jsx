@@ -1,44 +1,35 @@
-// src/pages/LoginPage.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [fullName, setFullName] = useState('');
   const [userName, setUserName] = useState('');
-  const [contact, setContact] = useState('email');
+  const [contact, setContact] = useState('email'); // Default to email
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('donor');
+  const [role, setRole] = useState('donor'); // Default to donor
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!fullName || !userName || !password || !role) {
+    if (!userName || !password || !role) {
       alert('Please enter all required fields.');
       return;
     }
 
-    // Dispatch login action
-    dispatch(login({ user: userName, contact, role, password, fullName }));
+// Dispatch login action
+dispatch(login({ user: userName, contact, role, password }));
 
-    alert('Login successful!');
-    navigate(/home/${role});
+alert('Login successful!');
+
+// Redirect to the home page based on the role
+navigate(`/home/${role}`); 
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.formContainer}>
         <h2 style={styles.heading}>Login</h2>
-
-        {/* Input fields */}
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          style={styles.input}
-        />
         
         <div style={styles.radioGroup}>
           <label style={styles.radioLabel}>
@@ -62,7 +53,7 @@ const LoginPage = () => {
             Phone Number
           </label>
         </div>
-
+        
         <input
           type={contact === 'email' ? 'email' : 'tel'}
           placeholder={contact === 'email' ? 'Email' : 'Phone Number'}
@@ -70,7 +61,6 @@ const LoginPage = () => {
           onChange={(e) => setUserName(e.target.value)}
           style={styles.input}
         />
-
         <input
           type="password"
           placeholder="Password"
@@ -78,7 +68,7 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           style={styles.input}
         />
-        
+
         <select value={role} onChange={(e) => setRole(e.target.value)} style={styles.select}>
           <option value="donor">Donor</option>
           <option value="charity">Charity</option>
@@ -89,11 +79,6 @@ const LoginPage = () => {
         
         <p style={styles.registerPrompt}>
           Don't have an account? <a href="/signup" style={styles.link}>Sign up</a>
-        </p>
-
-        {/* Forgot Password link */}
-        <p style={styles.forgotPassword}>
-          <a href="/forgot-password" style={styles.link}>Forgot Password?</a>
         </p>
       </div>
     </div>
@@ -106,7 +91,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(to right, black,blue,black)',
+    background: 'linear-gradient(to right, #00c6ff, #0072ff)',
   },
   formContainer: {
     backgroundColor: 'white',
@@ -148,7 +133,7 @@ const styles = {
   select: {
     width: '100%',
     padding: '12px',
-    marginBottom: '15px',
+    marginBottom: '20px',
     fontSize: '1rem',
     borderRadius: '8px',
     border: '1px solid #ddd',
@@ -172,11 +157,7 @@ const styles = {
     color: '#0072ff',
     textDecoration: 'none',
   },
-  forgotPassword: {
-    marginTop: '10px',
-    fontSize: '0.9rem',
-    color: '#333',
-  },
 };
 
 export default LoginPage;
+

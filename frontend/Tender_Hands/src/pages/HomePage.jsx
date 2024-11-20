@@ -345,8 +345,16 @@ const Home = () => {
     if (!isAuthenticated) {
       return (
         <div style={contentStyle}>
-          <h1 style={mainTitleStyle}>Welcome to Our Donation Platform</h1>
-          <p style={descriptionStyle}>Your contributions can change lives!</p>
+         <h1 style={mainTitleStyle}>Welcome to Our Donation Platform</h1>
+
+<img 
+  src="https://cdn.pixabay.com/photo/2018/10/24/19/58/babys-hand-3771123_960_720.jpg" 
+  alt="Baby's hand" 
+  style={imageStyle}
+/>
+
+<p style={descriptionStyle}>Your contributions can change lives!</p>
+
           <p style={descriptionStyle}>
             Join our community and make a lasting impact.
           </p>
@@ -356,7 +364,7 @@ const Home = () => {
               Flexible Donation Options
             </h2>
             <p>Choose any amount that suits your budget.</p>
-            <Link to="/donation-options">
+            <Link to="/about">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -377,7 +385,7 @@ const Home = () => {
               Transparent Donation Tracking
             </h2>
             <p>See exactly where your contributions go.</p>
-            <Link to="/tracking">
+            <Link to="/about">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -409,7 +417,7 @@ const Home = () => {
                 borderRadius: "10px",
               }}
             />
-            <Link to="/sign-up">
+            <Link to="/login">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -516,7 +524,7 @@ const Home = () => {
                   Donate
                 </button>
               </Link>
-              <Link to="/learn-more">
+              <Link to="/about">
                 <button
                   style={buttonStyle}
                   onMouseOver={(e) =>
@@ -539,7 +547,7 @@ const Home = () => {
               Effortless Setup for Donations
             </h2>
             <p>Easily create your donation plan in just a few clicks.</p>
-            <Link to="/start-donation">
+            <Link to="/signup">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -639,7 +647,7 @@ const Home = () => {
             {/* Dropdown menu */}
             {isDropdownOpen && (
               <div style={dropdownMenuStyle}>
-                <Link to="/login/charity">
+                <Link to="/signup">
                   <button
                     style={dropdownButtonStyle}
                     onMouseOver={(e) =>
@@ -654,7 +662,7 @@ const Home = () => {
                     Log In as Charity
                   </button>
                 </Link>
-                <Link to="/login/donor">
+                <Link to="/login">
                   <button
                     style={dropdownButtonStyle}
                     onMouseOver={(e) =>
@@ -852,6 +860,13 @@ const faqQuestionStyle = {
   color: "#2980b9",
   cursor: "pointer",
   marginBottom: "10px",
+};
+const imageStyle = {
+  display: 'block',
+  margin: '0 auto',  // Center the image
+  width: '80%',      // Adjust the width as needed
+  borderRadius: '10px', // Optional: add rounded corners
+  marginBottom: '20px', // Space between image and the description
 };
 
 const adminSectionStyle = {
