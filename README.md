@@ -179,3 +179,18 @@ Install frontend dependencies:
 Bash
 npm install 
 
+4. Running the Application
+Start the backend server
+Bash
+flask run
+
+Start the frontend development server:
+
+Bash
+npm run dev
+
+5. Built With:
+Flask - The web framework used
+React - Frontend library
+Redux - State management library
+
