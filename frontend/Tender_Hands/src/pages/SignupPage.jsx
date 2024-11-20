@@ -78,7 +78,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(to right, #6a11cb 0%, #2575fc 100%)',
+    background: 'linear-gradient(to right, black, blue, black)',
   },
   formContainer: {
     backgroundColor: 'white',
@@ -113,7 +113,7 @@ const styles = {
     border: '1px solid #ddd',
   },
   button: {
-    backgroundColor: '#0072ff',
+    background: 'linear-gradient(to right, black, #0072ff,black)',
     color: 'white',
     fontSize: '1.2rem',
     padding: '12px',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -84,11 +85,41 @@ const ContactPage = () => {
         <h2 style={styles.ctaTitle}>Share your thoughts</h2>
         <p>We value your feedback and are here to help you with any questions or concerns.</p>
         <div style={styles.socialMediaIcons}>
-          <button style={styles.socialIcon} onClick={() => window.location.href = 'https://facebook.com'}>Facebook</button>
-          <button style={styles.socialIcon} onClick={() => window.location.href = 'https://twitter.com'}>Twitter</button>
-          <button style={styles.socialIcon} onClick={() => window.location.href = 'https://instagram.com'}>Instagram</button>
-          <button style={styles.socialIcon} onClick={() => window.location.href = 'https://linkedin.com'}>LinkedIn</button>
-          <button style={styles.socialIcon} onClick={() => window.location.href = 'https://youtube.com'}>YouTube</button>
+          <button 
+            style={styles.socialIcon} 
+            onClick={() => window.location.href = 'https://facebook.com'}
+          >
+            <FaFacebook size={30} />
+            <span style={styles.iconText}>Facebook</span>
+          </button>
+          <button 
+            style={styles.socialIcon} 
+            onClick={() => window.location.href = 'https://twitter.com'}
+          >
+            <FaTwitter size={30} />
+            <span style={styles.iconText}>Twitter</span>
+          </button>
+          <button 
+            style={styles.socialIcon} 
+            onClick={() => window.location.href = 'https://instagram.com'}
+          >
+            <FaInstagram size={30} />
+            <span style={styles.iconText}>Instagram</span>
+          </button>
+          <button 
+            style={styles.socialIcon} 
+            onClick={() => window.location.href = 'https://linkedin.com'}
+          >
+            <FaLinkedin size={30} />
+            <span style={styles.iconText}>LinkedIn</span>
+          </button>
+          <button 
+            style={styles.socialIcon} 
+            onClick={() => window.location.href = 'https://youtube.com'}
+          >
+            <FaYoutube size={30} />
+            <span style={styles.iconText}>YouTube</span>
+          </button>
         </div>
       </div>
     </div>
@@ -102,7 +133,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: '#121212',
+    background: 'linear-gradient(to right, black, blue, black)',
     color: '#ffffff',
   },
   formContainer: {
@@ -162,9 +193,12 @@ const styles = {
   },
   socialMediaIcons: {
     display: 'flex',
+    flexDirection: 'column',
     gap: '10px',
   },
   socialIcon: {
+    display: 'flex',
+    alignItems: 'center',
     background: 'transparent',
     border: 'none',
     color: '#ffffff',
@@ -172,6 +206,11 @@ const styles = {
     cursor: 'pointer',
     textDecoration: 'none',
     transition: 'transform 0.3s ease',
+  },
+  iconText: {
+    marginLeft: '10px',
+    fontSize: '16px',
+    fontWeight: 'bold',
   },
 };
 

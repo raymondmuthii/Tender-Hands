@@ -12,7 +12,12 @@ import CharityDashboard from './components/CharityDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
-import ContactPage from './pages/ContactPage'; // Import ContactPage
+import ContactPage from './pages/ContactPage';
+import About from './pages/about';
+import ForgotPasswordPage from './pages/ForgotPasswordPage'; 
+import LearnMore from './pages/LearnMore'; 
+import ExplorePage from './pages/ExplorePage'; 
+
 import './App.css';
 
 function App() {
@@ -23,10 +28,12 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/donations" element={<DonationList />} />
             <Route path="/donate" element={<DonateForm />} />
             <Route path="/donation-history" element={<DonationHistory />} />
             <Route path="/charity-application" element={<CharityApplication />} />
+            
             <Route path="/charity-dashboard" element={<CharityDashboard />} />
             {/* Admin Routes */}
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
@@ -35,6 +42,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             {/* Contact Page Route */}
             <Route path="/contact" element={<ContactPage />} /> {/* Add Contact Page route */}
+            <Route path='about' element={<About />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/learn-more" element={<LearnMore />} />
+            <Route path="/explore" element={<ExplorePage />} />
           </Routes>
         </div>
       </Router>
