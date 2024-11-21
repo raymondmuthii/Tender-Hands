@@ -4,7 +4,7 @@ import { login } from '../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [fullName, setFullName] = useState('');
+  const [fullName, setName] = useState('');
   const [userName, setUserName] = useState('');
   const [contact, setContact] = useState('email');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ const LoginPage = () => {
   const isValidPhoneNumber = (phone) => /^\+(\d{12})$/.test(phone);
 
   const handleLogin = () => {
-    if (!fullName || !userName || !password || !role) {
+    if (!Name || !userName || !password || !role) {
       alert('Please enter all required fields.');
       return;
     }
@@ -33,7 +33,7 @@ const LoginPage = () => {
     }
 
     setLoading(true); // Start loading
-    dispatch(login({ user: userName, contact, role, password, fullName }));
+    dispatch(login({ user: userName, contact, role, password, Name }));
     alert('Login successful!');
     navigate(`/home/${role}`);
   };
@@ -44,9 +44,9 @@ const LoginPage = () => {
         <h2 style={styles.heading}>Login</h2>
         <input
           type="text"
-          placeholder="Full Name"
+          placeholder="Name"
           value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           style={styles.input}
         />
         
@@ -117,7 +117,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(to right, black, blue, black)',
+    background: '#f4f4f4',
   },
   formContainer: {
     backgroundColor: 'white',
