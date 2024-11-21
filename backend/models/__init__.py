@@ -1,6 +1,6 @@
 # models/__init__.py
 from datetime import datetime
-from extensions import db
+from backend.extensions import db
 
 class BaseModel(db.Model):
     """Base model class that includes common fields and methods."""

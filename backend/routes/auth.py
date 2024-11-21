@@ -1,13 +1,14 @@
 # app/routes/auth.py
 from datetime import datetime, timedelta
-from flask import jsonify, request
+from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from marshmallow import ValidationError
-from .extensions import db
-from ..models.user import User
-from ..schemas.user import UserSchema
-from . import auth_bp
 
+from backend.app import db  # Import db from app package
+from backend.models.user import User  # Use absolute import from app package
+from backend.schemas.user import UserSchema  # Use absolute import from app package
+
+auth_bp = Blueprint('auth', __name__)
 user_schema = UserSchema()
 
 @auth_bp.route('/login', methods=['POST'])
@@ -33,9 +34,9 @@ def login():
         return jsonify({'error': 'Account is deactivated'}), 403
     
     if user.check_password(data['password']):
-        _login_at = datetime.utcnow()
         user.failed_login_attempts = 0
         user.locked_until = None
+        user.last_login_at = datetime.utcnow()  # Added to track last login
         db.session.commit()
         
         access_token = create_access_token(identity=user.id)
@@ -65,6 +66,7 @@ def register():
     try:
         user = user_schema.load(data)
         user.set_password(data['password'])
+        user.is_active = True  # Ensure new users are active by default
         
         db.session.add(user)
         db.session.commit()

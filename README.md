@@ -80,6 +80,9 @@ Start the frontend development server:
 Bash
 * npm run dev
 
+5. deployment server
+* https://tender-hands.vercel.app/
+
 ### Built With:
 * Flask - The web framework used
 * React - Frontend library
