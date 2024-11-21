@@ -364,7 +364,7 @@ const Home = () => {
               Flexible Donation Options
             </h2>
             <p>Choose any amount that suits your budget.</p>
-            <Link to="/about">
+            <Link to="/learn-more">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -385,7 +385,7 @@ const Home = () => {
               Transparent Donation Tracking
             </h2>
             <p>See exactly where your contributions go.</p>
-            <Link to="/about">
+            <Link to="/explore">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>

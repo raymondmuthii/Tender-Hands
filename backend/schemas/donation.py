@@ -33,12 +33,7 @@ class DonationSchema(BaseSchema):
     donor = fields.Nested('UserSchema', only=('id', 'name'), dump_only=True)
     charity = fields.Nested('CharitySchema', only=('id', 'name'), dump_only=True)
 
-<<<<<<< HEAD
     @ma.post_load
-=======
-    # Method to create Donation instance after loading data
-    @post_load
->>>>>>> 8afdb2824e2bac62beb241e990dda0b27d3687fe
     def make_donation(self, data, **kwargs):
         return Donation(**data)
     

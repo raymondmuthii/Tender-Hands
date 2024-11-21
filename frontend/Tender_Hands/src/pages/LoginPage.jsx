@@ -4,32 +4,51 @@ import { login } from '../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const [fullName, setName] = useState('');
   const [userName, setUserName] = useState('');
-  const [contact, setContact] = useState('email'); // Default to email
+  const [contact, setContact] = useState('email');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('donor'); // Default to donor
+  const [role, setRole] = useState('donor');
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+  const isValidPhoneNumber = (phone) => /^\+(\d{12})$/.test(phone);
+
   const handleLogin = () => {
-    if (!userName || !password || !role) {
+    if (!Name || !userName || !password || !role) {
       alert('Please enter all required fields.');
       return;
     }
 
-// Dispatch login action
-dispatch(login({ user: userName, contact, role, password }));
+    if (contact === 'email' && !isValidEmail(userName)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
 
-alert('Login successful!');
+    if (contact === 'phone' && !isValidPhoneNumber(userName)) {
+      alert('Please enter a valid phone number starting with "+" and 12 digits.');
+      return;
+    }
 
-// Redirect to the home page based on the role
-navigate(`/home/${role}`); 
+    setLoading(true); // Start loading
+    dispatch(login({ user: userName, contact, role, password, Name }));
+    alert('Login successful!');
+    navigate(`/home/${role}`);
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.formContainer}>
         <h2 style={styles.heading}>Login</h2>
+        <input
+          type="text"
+          placeholder="Name"
+          value={fullName}
+          onChange={(e) => setName(e.target.value)}
+          style={styles.input}
+        />
         
         <div style={styles.radioGroup}>
           <label style={styles.radioLabel}>
@@ -53,7 +72,7 @@ navigate(`/home/${role}`);
             Phone Number
           </label>
         </div>
-        
+
         <input
           type={contact === 'email' ? 'email' : 'tel'}
           placeholder={contact === 'email' ? 'Email' : 'Phone Number'}
@@ -61,6 +80,7 @@ navigate(`/home/${role}`);
           onChange={(e) => setUserName(e.target.value)}
           style={styles.input}
         />
+
         <input
           type="password"
           placeholder="Password"
@@ -68,17 +88,23 @@ navigate(`/home/${role}`);
           onChange={(e) => setPassword(e.target.value)}
           style={styles.input}
         />
-
+        
         <select value={role} onChange={(e) => setRole(e.target.value)} style={styles.select}>
           <option value="donor">Donor</option>
           <option value="charity">Charity</option>
           <option value="admin">Admin</option>
         </select>
         
-        <button onClick={handleLogin} style={styles.button}>Log In</button>
+        <button onClick={handleLogin} style={styles.button} disabled={loading}>
+          {loading ? 'Logging in...' : 'Log In'}
+        </button>
         
         <p style={styles.registerPrompt}>
           Don't have an account? <a href="/signup" style={styles.link}>Sign up</a>
+        </p>
+
+        <p style={styles.forgotPassword}>
+          <a href="/forgot-password" style={styles.link}>Forgot Password?</a>
         </p>
       </div>
     </div>
@@ -91,7 +117,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(to right, #00c6ff, #0072ff)',
+    background: '#f4f4f4',
   },
   formContainer: {
     backgroundColor: 'white',
@@ -133,7 +159,7 @@ const styles = {
   select: {
     width: '100%',
     padding: '12px',
-    marginBottom: '20px',
+    marginBottom: '15px',
     fontSize: '1rem',
     borderRadius: '8px',
     border: '1px solid #ddd',
@@ -157,7 +183,11 @@ const styles = {
     color: '#0072ff',
     textDecoration: 'none',
   },
+  forgotPassword: {
+    marginTop: '10px',
+    fontSize: '0.9rem',
+    color: '#333',
+  },
 };
 
 export default LoginPage;
-

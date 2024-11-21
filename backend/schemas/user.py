@@ -1,6 +1,6 @@
 from marshmallow import fields, validate, post_load
 from . import BaseSchema
-from ..models.beneficiary import User
+from backend.models.beneficiary import User
 import marshmallow as ma
 class UserSchema(BaseSchema):
     # Field for the user's name between 2 and 100 characters
