@@ -4,7 +4,8 @@ from flask_login import UserMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import event
-from . import BaseModel, db
+from backend.models import BaseModel, db
+from backend.models.user import User
 
 class User(BaseModel, UserMixin):
     __tablename__ = 'users'
