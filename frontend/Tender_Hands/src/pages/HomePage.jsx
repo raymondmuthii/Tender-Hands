@@ -90,7 +90,7 @@ const Home = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: "#e74c3c",
+    backgroundColor: "blue",
     color: "white",
     fontSize: "1.1rem",
     padding: "12px 25px",
@@ -361,7 +361,7 @@ const Home = () => {
             Join our community and make a lasting impact.
           </p>
 
-          <div style={sectionStyle}>
+          <div style={{ ...sectionStyle, maxWidth: '400px', padding: '20px', margin: '50' }}>
             <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>
               Flexible Donation Options
             </h2>
@@ -382,8 +382,15 @@ const Home = () => {
             </Link>
           </div>
 
-          <div style={sectionStyle}>
-            <h2 style={{ color: "#27ae60", fontWeight: "bold" }}>
+          <div style={{ 
+            ...sectionStyle, 
+            position: 'relative', 
+            left: '450px',  // Moves the container to the right
+            top: '-200px',  // Moves the container up (adjust as needed)
+            width: '30%',  // Makes the container smaller
+            margin: '0 auto' // Centers it horizontally if needed
+            }}>
+            <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>
               Transparent Donation Tracking
             </h2>
             <p>See exactly where your contributions go.</p>
@@ -403,8 +410,43 @@ const Home = () => {
             </Link>
           </div>
 
-          <div style={sectionStyle}>
-            <h2 style={{ color: "#2980b9", fontWeight: "bold" }}>Impact</h2>
+          <div style={{ 
+            ...sectionStyle, 
+            position: 'relative', 
+            left: '10px',  // Moves the container to the right
+            top: '-400px',  // Moves the container up (adjust as needed)
+            width: '30%',  // Makes the container smaller
+            margin: '0 auto' // Centers it horizontally if needed
+            }}>
+            <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>
+              Effortless Setup for Donations
+            </h2>
+            <p>Easily create your donation plan in just a few clicks.</p>
+            <Link to="/signup">
+              <button
+                style={buttonStyle}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor =
+                    buttonHoverStyle.backgroundColor)
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+                }
+              >
+                Start
+              </button>
+            </Link>
+          </div>
+
+          <div style={{ 
+            ...sectionStyle, 
+            position: 'relative', 
+            left: '-300px',  // Moves the container to the right
+            top: '-360px',  // Moves the container up (adjust as needed)
+            width: '50%',  // Makes the container smaller
+            margin: '0 auto' // Centers it horizontally if needed
+            }}>
+            <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>Impact</h2>
             <p>
               Join Our Giving Community. Together, we can make a difference.
             </p>
@@ -419,7 +461,7 @@ const Home = () => {
                 borderRadius: "10px",
               }}
             />
-            <Link to="/login">
+            <Link to="/about">
               <button
                 style={buttonStyle}
                 onMouseOver={(e) =>
@@ -430,13 +472,20 @@ const Home = () => {
                   (e.target.style.backgroundColor = buttonStyle.backgroundColor)
                 }
               >
-                Sign Up
+                learn more
               </button>
             </Link>
           </div>
 
-          <div style={sectionStyle}>
-            <h2 style={{ color: "#27ae60", fontWeight: "bold" }}>Support</h2>
+          <div style={{ 
+            ...sectionStyle, 
+            position: 'relative', 
+            left: '300px',  // Moves the container to the right
+            top: '-739px',  // Moves the container up (adjust as needed)
+            width: '50%',  // Makes the container smaller
+            margin: '0 auto' // Centers it horizontally if needed
+            }}>
+            <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>Support</h2>
             <p>
               Your contributions matter. Every donation helps us achieve our
               mission.
@@ -471,13 +520,14 @@ const Home = () => {
           <div
             style={{
               textAlign: "center",
-              marginTop: "40px",
+          
+              marginTop: "-700px",
               padding: "20px",
               borderRadius: "8px",
               backgroundColor: "#f0f4f8",
             }}
           >
-            <h2 style={{ color: "#2980b9", fontWeight: "bold" }}>Impact</h2>
+            <h2 style={{ color: "#2c3e50", fontWeight: "bold" }}>Impact</h2>
             <p>
               Every donation makes a difference. Together, we have raised over
               $1 million to support vital programs. Join us in creating lasting
@@ -544,26 +594,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div style={sectionStyle}>
-            <h2 style={{ color: "#e74c3c", fontWeight: "bold" }}>
-              Effortless Setup for Donations
-            </h2>
-            <p>Easily create your donation plan in just a few clicks.</p>
-            <Link to="/signup">
-              <button
-                style={buttonStyle}
-                onMouseOver={(e) =>
-                  (e.target.style.backgroundColor =
-                    buttonHoverStyle.backgroundColor)
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.backgroundColor = buttonStyle.backgroundColor)
-                }
-              >
-                Start
-              </button>
-            </Link>
-          </div>
+          
           {/* FAQ Section */}
           <div style={sectionStyle}>
             <h2 style={{ color: "#2980b9", fontWeight: "bold" }}>
@@ -633,17 +664,13 @@ const Home = () => {
           {/* Dropdown button */}
           <div style={{ position: "relative" }}>
             <button
-              style={buttonStyle}
-              onMouseOver={(e) =>
-                (e.target.style.backgroundColor =
-                  buttonHoverStyle.backgroundColor)
-              }
-              onMouseOut={(e) =>
-                (e.target.style.backgroundColor = buttonStyle.backgroundColor)
-              }
+            style={{
+              backgroundColor: "white",
+            }}
+          
               onClick={toggleDropdown}
             >
-              Log In / Sign Up
+            
             </button>
 
             {/* Dropdown menu */}
@@ -819,10 +846,14 @@ const Home = () => {
       {/* Footer with Terms of Service and Privacy Policy links */}
       <footer
         style={{
-          marginTop: "60px",
+          
           padding: "20px 0",
           backgroundColor: "#2c3e50",
           color: "#ecf0f1",
+          width: "100%",     // Ensures the footer spans the entire width
+          height: "10vh",    // Ensures the footer takes up the full height of the screen
+          position: "bottom", // Keeps it fixed at the bottom if necessary
+          bottom: 0,           // Keeps the footer at the bottom of the screen
         }}
       >
         <div>
