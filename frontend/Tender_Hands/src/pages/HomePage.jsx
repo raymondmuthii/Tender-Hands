@@ -45,10 +45,12 @@ const Home = () => {
     },
   };
 
+ 
   const containerStyle = {
     backgroundColor: "#f4f8fb",
     fontFamily: "Arial, sans-serif",
     padding: "40px",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -864,8 +866,8 @@ const faqQuestionStyle = {
 const imageStyle = {
   display: 'block',
   margin: '0 auto',  // Center the image
-  width: '80%',      // Adjust the width as needed
-  borderRadius: '10px', // Optional: add rounded corners
+  width: '100%',      // Adjust the width as needed
+  borderRadius: '0.5px', // Optional: add rounded corners
   marginBottom: '20px', // Space between image and the description
 };
 

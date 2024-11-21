@@ -200,7 +200,7 @@ const styles = {
   socialIcon: {
     display: 'flex',
     alignItems: 'center',
-    background: 'black',
+    background: '#1E1D1D',
     border: 'none',
     color: '#ffffff',
     fontSize: '18px',
