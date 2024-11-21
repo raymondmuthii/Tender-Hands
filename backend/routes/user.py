@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.user import User
 from schemas.user import UserSchema
-from app import db
+from ..app import db
 
 user_bp = Blueprint('user', __name__)
 user_schema = UserSchema()

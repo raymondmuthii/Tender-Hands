@@ -1,0 +1,7 @@
+README.md
+setup.py
+tender_hands.egg-info/PKG-INFO
+tender_hands.egg-info/SOURCES.txt
+tender_hands.egg-info/dependency_links.txt
+tender_hands.egg-info/requires.txt
+tender_hands.egg-info/top_level.txt

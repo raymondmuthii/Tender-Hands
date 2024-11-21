@@ -1,6 +1,6 @@
 from datetime import datetime
 from decimal import Decimal
-from app import db
+from ..app import db
 from backend.models.beneficiary import BaseModel
 
 class Donation(BaseModel):
