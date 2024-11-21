@@ -67,7 +67,7 @@ const Home = () => {
     padding: "40px",
     borderRadius: "10px",
     boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
-    maxWidth: "600px",
+    // maxWidth: "100%",
     width: "100%",
     textAlign: "center",
     opacity: 0.9, // Make it a bit transparent to let the background show through
