@@ -81,7 +81,6 @@ const SignupPage = () => {
         <select value={role} onChange={(e) => setRole(e.target.value)} style={styles.select}>
           <option value="donor">Donor</option>
           <option value="charity">Charity</option>
-          <option value="admin">Admin</option>
         </select>
 
         <button onClick={handleSignup} style={styles.button}>Sign Up</button>
