@@ -1,5 +1,5 @@
 # app/__init__.py
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -7,6 +7,7 @@ from .config import Config
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+import requests
 
 # Initialize extensions
 db = SQLAlchemy()
@@ -26,6 +27,24 @@ def create_app(config_class=Config):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    # add root route
+    @app.route('/')
+    def index():
+        return jsonify({"message": "Tender Hands API"}), 200
+    
+    @app.route('/api/donations/callback', methods=['POST'])
+    def mpesa_callback():
+    # Safaricom sends JSON data to this endpoint
+        data = request.json
+        print("Received M-PESA Callback:", data)
+
+    # Respond with acknowledgment
+        response = {
+            "ResultCode": 0,  # 0 means success in Safaricom's system
+            "ResultDesc": "Callback received successfully"
+        }
+        return jsonify(response), 200
     
     # Register blueprints
     from .routes import auth, charity, donation, admin

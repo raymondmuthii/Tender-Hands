@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance for the Tender Hands app
 const api = axios.create({
-  baseURL: 'https://tenderhands-api.com/api', // Replace with your actual API base URL
+  baseURL: 'http://127.0.0.1:5000/api', // Replace with your actual API base URL
   timeout: 10000, // Set a timeout for requests
   headers: {
     'Content-Type': 'application/json',
