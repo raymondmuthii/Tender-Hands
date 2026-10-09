@@ -87,11 +87,3 @@ Bash
 * Flask - The web framework used
 * React - Frontend library
 * Redux - State management library
-
-### Contributors
-* **Gadiye Kirimi - https://github.com/Gadiye**
-* **Joanne Mbula - https://github.com/lowkey-joanne**
-* **Arnold Karoki - https://github.com/arnoldkaroki**
-* **Steve Mutwiri - https://github.com/stevedev-ops**
-* **Raymond Muthii - https://github.com/raymuthii**
-* **June Jepkurui -https://github.com/June-Jepkurui-png**
